@@ -1,0 +1,19 @@
+{
+  "name": "api-restful-con-nodejs-y-mongodb",
+  "version": "1.0.0",
+  "description": "Api REST del curso de MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CamiloCastellanos/Api-Restful-con-NodeJS-y-MongoDB.git"
+  },
+  "author": "Camilo Castellanos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CamiloCastellanos/Api-Restful-con-NodeJS-y-MongoDB/issues"
+  },
+  "homepage": "https://github.com/CamiloCastellanos/Api-Restful-con-NodeJS-y-MongoDB#readme"
+}
