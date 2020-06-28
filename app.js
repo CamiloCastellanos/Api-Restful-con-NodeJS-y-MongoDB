@@ -15,6 +15,19 @@ app.use(bodyParser.json());
 
 //Configuracion CORS
 
-// Rutas
+/* Rutas */
+//Ruta de Prueba
+app.get("/prueba-api", (req, res) => {
+    res.status(200).send({
+        message: 'Esta ruta es de prueba en mi api REST con MongoDB y NodeJS.'
+    })
+});
+// Ruta por defecto
+app.get("/", (req, res) => {
+    res.status(200).send({
+        message: 'Esta es la ruta por defencto del api REST con MongoDB y NodeJS.'
+    })
+});
 
+//Exporta el modulo generado en el codigo anterior 
 module.exports = app;
