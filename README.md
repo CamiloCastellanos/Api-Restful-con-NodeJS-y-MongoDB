@@ -8,11 +8,10 @@ Se instalaron las siguientes dependencias:
 -	Mongoose
 -	Nodemon
 
-Se deja un mensaje si no se accede a un metodo :
- 
- 
+0. Se deja un mensaje si no se accede a un metodo :
+
 1.	la creación de un nuevo registro en la BD (frutas):
- 
+
 2.	Lista de los registros en la BD:
  
 3.	Búsqueda de un registro dado su ID y por medio de GET:
