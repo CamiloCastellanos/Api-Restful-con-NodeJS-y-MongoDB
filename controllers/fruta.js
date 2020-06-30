@@ -11,6 +11,7 @@ function prueba(req, res) {
         message: 'Esta es la ruta por defencto del api REST con MongoDB y NodeJS.'
     });
 }
+
 //Adiciona una fruta en la BD.
 function adicionarFruta(req, res) {
     let fruta = new frutaModelo();
@@ -45,8 +46,30 @@ function adicionarFruta(req, res) {
     }
 }
 
+//Trae todas las frutas de la bd
+function ltsFrutas(req, res) {
+    frutaModelo.find({}).exec((err, fruta) => {
+        if (err) {
+            res.status(500).send({
+                message: 'Error en el servicio.'
+            });
+        } else {
+            if (fruta) {
+                res.status(200).send({
+                    fruta
+                });
+            } else {
+                res.status(404).send({
+                    message: 'No hay Frutas.'
+                });
+            }
+        }
+    })
+}
+
 /* Exportar las funciones*/
 module.exports = {
     prueba,
-    adicionarFruta
-}
+    adicionarFruta,
+    ltsFrutas
+};
