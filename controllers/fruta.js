@@ -67,9 +67,55 @@ function ltsFrutas(req, res) {
     })
 }
 
+//Trae la fruta por el ID
+function buscarFruta(req, res) {
+    let params = req.body;
+    let frutaID = params.id;
+    frutaModelo.findById(frutaID).exec((err, fruta) => {
+        if (err) {
+            res.status(500).send({
+                message: 'Error en el servicio.'
+            });
+        } else {
+            if (fruta) {
+                res.status(200).send({
+                    fruta
+                });
+            } else {
+                res.status(404).send({
+                    message: 'No existe la Fruta.'
+                });
+            }
+        }
+    });
+}
+
+function buscarFrutaID(req, res) {
+    let frutaID = req.params.id;
+    frutaModelo.findById(frutaID).exec((err, fruta) => {
+        if (err) {
+            res.status(500).send({
+                message: 'Error en el servicio.'
+            });
+        } else {
+            if (fruta) {
+                res.status(200).send({
+                    fruta
+                });
+            } else {
+                res.status(404).send({
+                    message: 'No existe la Fruta.'
+                });
+            }
+        }
+    });
+}
+
 /* Exportar las funciones*/
 module.exports = {
     prueba,
     adicionarFruta,
-    ltsFrutas
+    ltsFrutas,
+    buscarFruta,
+    buscarFrutaID
 };
