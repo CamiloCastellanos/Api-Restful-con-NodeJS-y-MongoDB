@@ -69,7 +69,9 @@ function ltsFrutas(req, res) {
 
 //Trae la fruta por el ID
 function buscarFruta(req, res) {
+    //Obtiene los valores enviados por Post
     let params = req.body;
+    //Obtiene el id
     let frutaID = params.id;
     frutaModelo.findById(frutaID).exec((err, fruta) => {
         if (err) {
@@ -90,7 +92,9 @@ function buscarFruta(req, res) {
     });
 }
 
+//Trae la fruta por el ID
 function buscarFrutaID(req, res) {
+    //Busca el ID en la url
     let frutaID = req.params.id;
     frutaModelo.findById(frutaID).exec((err, fruta) => {
         if (err) {
@@ -111,11 +115,36 @@ function buscarFrutaID(req, res) {
     });
 }
 
+//Actualiza la fruta
+function actualizarFruta(req, res) {
+    let frutaID = req.params.id;
+    let frutaActualizada = req.body;
+
+    frutaModelo.findByIdAndUpdate(frutaID, frutaActualizada, { new: true }, (err, fruta) => {
+        if (err) {
+            res.status(500).send({
+                message: 'Error en el servicio.'
+            });
+        } else {
+            if (fruta) {
+                res.status(200).send({
+                    fruta: fruta
+                });
+            } else {
+                res.status(404).send({
+                    message: 'No hay Frutas.'
+                });
+            }
+        }
+    });
+}
+
 /* Exportar las funciones*/
 module.exports = {
     prueba,
     adicionarFruta,
     ltsFrutas,
     buscarFruta,
-    buscarFrutaID
+    buscarFrutaID,
+    actualizarFruta
 };

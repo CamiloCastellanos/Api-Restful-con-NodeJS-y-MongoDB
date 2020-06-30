@@ -10,5 +10,7 @@ api.post('/fruta', frutaController.adicionarFruta);
 api.post('/frutas', frutaController.ltsFrutas);
 api.get('/buscarFruta/:id', frutaController.buscarFrutaID);
 api.post('/buscarFruta', frutaController.buscarFruta);
+api.put('/actualizarFruta/:id', frutaController.actualizarFruta)
+
 
 module.exports = api;
