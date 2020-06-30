@@ -11,6 +11,6 @@ api.post('/frutas', frutaController.ltsFrutas);
 api.get('/buscarFruta/:id', frutaController.buscarFrutaID);
 api.post('/buscarFruta', frutaController.buscarFruta);
 api.put('/actualizarFruta/:id', frutaController.actualizarFruta)
-
+api.delete('/eliminarFruta/:id', frutaController.eliminarFruta);
 
 module.exports = api;

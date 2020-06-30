@@ -139,6 +139,35 @@ function actualizarFruta(req, res) {
     });
 }
 
+//Eliminar una fruta
+function eliminarFruta(req, res) {
+    let frutaID = req.params.id;
+
+    /*Se podria eliminar con solo .remove, pero con el .findByIdAndRemove
+      podemos eliminar mas rapido la fruta pasandole el ID*/
+
+    frutaModelo.findByIdAndRemove(frutaID, (err, fruta) => {
+        if (err) {
+            res.status(500).send({
+                message: 'Error en el servicio.'
+            });
+        } else {
+            if (fruta) {
+                res.status(200).send({
+                    fruta: fruta,
+                    menssage: 'Fue eliminada con exito.'
+                });
+            } else {
+                res.status(404).send({
+                    message: 'No Existe Frutas.'
+                });
+            }
+        }
+    });
+
+
+}
+
 /* Exportar las funciones*/
 module.exports = {
     prueba,
@@ -146,5 +175,6 @@ module.exports = {
     ltsFrutas,
     buscarFruta,
     buscarFrutaID,
-    actualizarFruta
+    actualizarFruta,
+    eliminarFruta
 };
