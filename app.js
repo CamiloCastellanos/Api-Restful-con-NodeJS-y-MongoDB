@@ -7,6 +7,9 @@ let app = express();
 
 // Cargar Rutas
 
+let frutaRouter = require('./routes/frutas');
+
+
 //body-parser
 
 // Convierte las peticiones realizadas en JSON
@@ -16,18 +19,17 @@ app.use(bodyParser.json());
 //Configuracion CORS
 
 /* Rutas */
-//Ruta de Prueba
-app.get("/prueba-api", (req, res) => {
-    res.status(200).send({
-        message: 'Esta ruta es de prueba en mi api REST con MongoDB y NodeJS.'
-    })
-});
+
 // Ruta por defecto
 app.get("/", (req, res) => {
     res.status(200).send({
-        message: 'Esta es la ruta por defencto del api REST con MongoDB y NodeJS.'
-    })
+        message: 'Esta es la ruta por defecto del api REST con MongoDB y NodeJS.'
+    });
 });
+
+//Ruta Base
+app.use('/api', frutaRouter);
+
 
 //Exporta el modulo generado en el codigo anterior 
 module.exports = app;
